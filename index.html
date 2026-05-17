@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fit Forge — Forge Your Best Self</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #08080C; color: #F5F5F7; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif; line-height: 1.6; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid #23232F; position: sticky; top: 0; background: rgba(8,8,12,0.92); backdrop-filter: blur(12px); z-index: 100; }
+    .logo { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; }
+    .logo span { color: #C6FF3D; }
+    nav a { color: #8E8E9D; text-decoration: none; font-size: 14px; font-weight: 500; }
+    nav a:hover { color: #C6FF3D; }
+    .hero { text-align: center; padding: 100px 40px 80px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(198,255,61,0.08) 0%, transparent 70%); top: -100px; left: 50%; transform: translateX(-50%); pointer-events: none; }
+    .badge { display: inline-block; background: rgba(198,255,61,0.1); border: 1px solid rgba(198,255,61,0.3); color: #C6FF3D; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 28px; }
+    .hero h1 { font-size: clamp(42px, 8vw, 80px); font-weight: 900; letter-spacing: -2px; line-height: 1; margin-bottom: 24px; }
+    .hero h1 .accent { color: #C6FF3D; }
+    .hero p { font-size: 18px; color: #8E8E9D; max-width: 500px; margin: 0 auto 40px; }
+    .app-store-btn { display: inline-flex; align-items: center; gap: 10px; background: #C6FF3D; color: #08080C; font-weight: 800; font-size: 15px; padding: 14px 28px; border-radius: 14px; text-decoration: none; }
+    .app-store-btn:hover { box-shadow: 0 8px 30px rgba(198,255,61,0.3); }
+    .features { padding: 80px 40px; max-width: 1000px; margin: 0 auto; }
+    .section-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #C6FF3D; margin-bottom: 12px; }
+    .features h2 { font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 48px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .feature-card { background: #11111A; border: 1px solid #23232F; border-radius: 20px; padding: 28px 24px; transition: border-color 0.2s, transform 0.2s; }
+    .feature-card:hover { border-color: rgba(198,255,61,0.3); transform: translateY(-3px); }
+    .feature-icon { font-size: 28px; margin-bottom: 14px; }
+    .feature-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { font-size: 13px; color: #8E8E9D; line-height: 1.5; }
+    .divider { height: 1px; background: #23232F; margin: 0 40px; }
+    .support { padding: 80px 40px; max-width: 700px; margin: 0 auto; text-align: center; }
+    .support h2 { font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; }
+    .support p { color: #8E8E9D; font-size: 16px; margin-bottom: 36px; }
+    .contact-card { background: #11111A; border: 1px solid #23232F; border-radius: 20px; padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .contact-card .email-label { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #5A5A6B; }
+    .contact-card a { font-size: 20px; font-weight: 700; color: #C6FF3D; text-decoration: none; }
+    .contact-card .response-time { font-size: 13px; color: #5A5A6B; background: #1A1A26; padding: 6px 14px; border-radius: 100px; }
+    .privacy { padding: 80px 40px; max-width: 700px; margin: 0 auto; }
+    .privacy h2 { font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 24px; }
+    .privacy-items { display: flex; flex-direction: column; gap: 16px; }
+    .privacy-item { background: #11111A; border: 1px solid #23232F; border-radius: 16px; padding: 20px 24px; display: flex; align-items: flex-start; gap: 16px; }
+    .privacy-dot { width: 8px; height: 8px; border-radius: 50%; background: #C6FF3D; margin-top: 6px; flex-shrink: 0; }
+    .privacy-item p { font-size: 14px; color: #8E8E9D; line-height: 1.6; }
+    .privacy-item strong { color: #F5F5F7; }
+    footer { border-top: 1px solid #23232F; padding: 32px 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    footer .logo { font-size: 16px; }
+    footer p { font-size: 13px; color: #5A5A6B; }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .hero { padding: 70px 20px 60px; } .features, .support, .privacy { padding: 60px 20px; } footer { padding: 24px 20px; flex-direction: column; text-align: center; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">FIT<span>FORGE</span></div>
+    <a href="mailto:support@fitforge.app">Contact</a>
+  </nav>
+  <section class="hero">
+    <div class="badge">Available on the App Store</div>
+    <h1>Forge Your<br><span class="accent">Best Self.</span></h1>
+    <p>Track workouts, fuel your body, and train in sync with your cycle — all in one powerful app.</p>
+    <a href="#" class="app-store-btn">⬇ Download on App Store</a>
+  </section>
+  <section class="features">
+    <div class="section-label">What's Inside</div>
+    <h2>Everything you need<br>to perform at your best.</h2>
+    <div class="features-grid">
+      <div class="feature-card"><div class="feature-icon">🏋️</div><h3>Workout Tracking</h3><p>Follow structured programs and log real-time GPS distance during outdoor sessions.</p></div>
+      <div class="feature-card"><div class="feature-icon">🥗</div><h3>Nutrition Logging</h3><p>Track calories, protein, carbs and fat. Plan meals across breakfast, lunch and dinner.</p></div>
+      <div class="feature-card"><div class="feature-icon">🌸</div><h3>Cycle Sync</h3><p>Workouts and wellness tips tailored to each phase of your menstrual cycle.</p></div>
+      <div class="feature-card"><div class="feature-icon">💧</div><h3>Hydration Reminders</h3><p>Smart water intake reminders to keep you fuelled and focused all day.</p></div>
+    </div>
+  </section>
+  <div class="divider"></div>
+  <section class="support">
+    <div class="section-label">Support</div>
+    <h2>We've got you.</h2>
+    <p>Have a question, found a bug, or need help with your account? Reach out anytime.</p>
+    <div class="contact-card">
+      <span class="email-label">Email Support</span>
+      <a href="mailto:support@fitforge.app">support@fitforge.app</a>
+      <span class="response-time">We respond within 24–48 hours</span>
+    </div>
+  </section>
+  <div class="divider"></div>
+  <section class="privacy">
+    <div class="section-label">Privacy &amp; Legal</div>
+    <h2>Your data,<br>your control.</h2>
+    <div class="privacy-items">
+      <div class="privacy-item"><div class="privacy-dot"></div><p><strong>We only collect what's needed.</strong> Fit Forge collects your fitness activity, nutrition logs, and cycle data solely to power your personal experience.</p></div>
+      <div class="privacy-item"><div class="privacy-dot"></div><p><strong>We never sell your data.</strong> Your health information is private. We do not share or sell your personal data to third parties.</p></div>
+      <div class="privacy-item"><div class="privacy-dot"></div><p><strong>You're in control.</strong> You can delete your account and all associated data at any time from the Settings tab inside the app.</p></div>
+    </div>
+  </section>
+  <footer>
+    <div class="logo">FIT<span>FORGE</span></div>
+    <p>© 2026 Fit Forge. All rights reserved.</p>
+  </footer>
+</body>
+</html>
